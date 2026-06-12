@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 cd /work
 
 cp --update=none /opt/FindPlantNLRs/Snakefile .
