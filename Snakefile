@@ -428,7 +428,7 @@ rule NLR_classification:
         "logs/Interproscan_classification/{sample}.log"
     shell:
         r"""
-        bash NLR_classification.sh {input.interpro} {input.gff3} {input.fasta} {input.genome} {input.codingseq} --prefix {params.prefix} --output_dir {params.output_dir} >> {log} 2>&1
+        NLR_classification.sh {input.interpro} {input.gff3} {input.fasta} {input.genome} {input.codingseq} --prefix {params.prefix} --output_dir {params.output_dir} >> {log} 2>&1
         touch {output.touch_file}
         """
 
@@ -449,5 +449,5 @@ rule Integrate_domain:
         "logs/Integrate_domain/{sample}.log"
     shell:
         r"""
-        bash get_integrated_domains.sh --prefix {params.prefix} --output_dir {params.output_dir} --type {params.nlr_type} > {log} 2>&1
+        get_integrated_domains.sh --prefix {params.prefix} --output_dir {params.output_dir} --type {params.nlr_type} > {log} 2>&1
         """

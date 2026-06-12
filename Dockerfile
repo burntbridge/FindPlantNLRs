@@ -226,9 +226,19 @@ RUN cd /opt && \
 # FindPlantNLRs
 #
 RUN cd /opt && \
-    wget https://github.com/lh3/seqtk/archive/refs/tags/v1.5.tar.gz && \
+    wget https://github.com/burntbridge/FindPlantNLRs/archive/refs/tags/v2.1.tar.gz && \
+    tar xzf v2.1.tar.gz && \
+    rm -f v2.1.tar.gz && \
+    mv FindPlantNLRs-2.1 FindPlantNLRs && \
+    chmod +x /opt/FindPlantNLRs/scripts/*
 
-
+# Get the reference fasta
+#
+RUN cd /opt/FindPlantNLRs/ref_db && \
+    wget https://doi.org/10.1371/journal.pbio.3001124.s013 && \
+    mv journal.pbio.3001124.s013.fasta ref.fasta
+    
+# copy stuff to /work
 
 ## Final Stage ##
 FROM ubuntu:24.04 AS final
@@ -239,6 +249,7 @@ COPY --from=build /tmp/staging/usr /usr
 ENV PATH=${PATH}:/opt/cdbfasta:/opt/hmmer-3.4/bin:/opt/ncbi-blast-2.17.0+/bin/:/opt/TSEBRA/bin
 ENV PATH=${PATH}:/opt/BRAKER/scripts:/opt/augustus-3.4.0/bin:/opt/augustus-3.4.0/scripts
 ENV PATH=${PATH}:/opt/ETP/bin:/opt/ETP/tools:/opt/ETP/bin/gmes/ProtHint/bin:/opt/ETP/bin/gmes
+ENV PATH=${PATH}:/opt/FindPlantNLRs/scripts
 
 ENV AUGUSTUS_CONFIG_PATH=/opt/augustus-3.4.0/config/
 ENV AUGUSTUS_BIN_PATH=/opt/augustus-3.4.0/bin/
