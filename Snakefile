@@ -86,13 +86,13 @@ rule get_contig_length:
 
 
 # Convert format of parser.gff in order to incorporate with hmm output later
-rule convert_paser_format:
+rule convert_parser_format:
     input:
         "tmp/{sample}.parser.gff"
     output:
         "tmp/{sample}.parser.bed"
     log:
-        "logs/convert_paser_format/{sample}.log"
+        "logs/convert_parser_format/{sample}.log"
     shell:
         r"""
         awk -v OFS='\t' '{{if ($7 == "+") {{print $1, $4, $5, $1, "forward", $7}} else if ($7 == "-") print $1, $4, $5, $1, "reverse", $7}}' {input} > {output} 2> {log}
@@ -100,14 +100,14 @@ rule convert_paser_format:
 
 
 # Convert to 20kbflanking bed file with bedtools
-rule get_paser_20kbflanking:
+rule get_parser_20kbflanking:
     input:
         bed="tmp/{sample}.parser.bed",
         genomefile="genome/{sample}.genomefile"
     output:
         "tmp/{sample}_parser.20kbflanking.bed"
     log:
-        "logs/get_paser_20kbflanking/{sample}.log"
+        "logs/get_parser_20kbflanking/{sample}.log"
     shell:
         r"""
         bedtools slop -b 20000 -s -i {input.bed} -g {input.genomefile} | bedtools sort -i - | bedtools merge -s -d 1 -c 1,5,6 -o distinct,distinct,distinct > {output} 2> {log}
