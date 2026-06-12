@@ -420,6 +420,7 @@ rule NLR_classification:
         genome="genome/{sample}.fasta",
         codingseq="tmp/{sample}_braker/braker.codingseq"
     output:
+        nlr_list="result/{sample}_NLR.list",
         touch_file="result/{sample}_NLRclassification.done"
     params:
         prefix="{sample}",
@@ -436,6 +437,7 @@ rule NLR_classification:
 # Find Integrate domain
 rule Integrate_domain:
     input:
+        "result/{sample}_NLR.list",
         "result/{sample}.tsv"
     output:
         "result/{sample}_pfam.tsv",
