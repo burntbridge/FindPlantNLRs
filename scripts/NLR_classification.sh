@@ -130,7 +130,7 @@ awk '{split($1, a, "."); print a[1]}' ${OUTPUT_DIR}${PREFIX}_NLR.list | sort -k 
 join NLR_temp_2 GFF3_temp | sort -k2,2 -n > NLR_temp_3
 # Reformat rows to produce new gff3 file
 awk 'BEGIN {OFS="\t"} {split($3, a, "[:\\-+]"); print  a[1], $4, $5, (a[2]+$6), (a[2]+$7), $8, $9, $10, $11}' NLR_temp_3 > ${OUTPUT_DIR}${PREFIX}_NLR.gff3
-seqtk subseq ${PROTEIN_FILE} ${OUTPUT_DIR}${PREFIX}_NLR.list > ${OUTPUT_DIR}${PREFIX}_NLR.fasta
+seqtk subseq ${PROTEIN_FILE} ${OUTPUT_DIR}${PREFIX}_NLR.list > ${OUTPUT_DIR}${PREFIX}_NLR_AA.fasta
 seqtk subseq ${CODING_SEQ_FILE} ${OUTPUT_DIR}${PREFIX}_NLR.list > ${OUTPUT_DIR}${PREFIX}_NLR_CDS.fasta
 for files in NLR_temp_*; do rm ${files}; done
 
@@ -144,7 +144,7 @@ awk '{split($1, a, "."); print a[1]}' ${OUTPUT_DIR}${PREFIX}_RNB.list | sort -k 
 join RNB_temp_2 GFF3_temp | sort -k2,2 -n > RNB_temp_3
 # Reformat rows to produce new gff3 file
 awk 'BEGIN {OFS="\t"} {split($3, a, "[:\\-+]"); print  a[1], $4, $5, (a[2]+$6), (a[2]+$7), $8, $9, $10, $11}' RNB_temp_3 > ${OUTPUT_DIR}${PREFIX}_RNB.gff3
-seqtk subseq ${PROTEIN_FILE} ${OUTPUT_DIR}${PREFIX}_RNB.list > ${OUTPUT_DIR}${PREFIX}_RNB.fasta
+seqtk subseq ${PROTEIN_FILE} ${OUTPUT_DIR}${PREFIX}_RNB.list > ${OUTPUT_DIR}${PREFIX}_RNB_AA.fasta
 seqtk subseq ${CODING_SEQ_FILE} ${OUTPUT_DIR}${PREFIX}_RNB.list > ${OUTPUT_DIR}${PREFIX}_RNB_CDS.fasta
 for files in RNB_temp_* ; do rm ${files} ; done
 
@@ -157,7 +157,7 @@ awk '{split($1, a, "."); print a[1]}' ${OUTPUT_DIR}${PREFIX}_RNL.list | sort -k 
 join RNL_temp_2 GFF3_temp | sort -k2,2 -n > RNL_temp_3
 # Reformat rows to produce new gff3 file
 awk 'BEGIN {OFS="\t"} {split($3, a, "[:\\-+]"); print  a[1], $4, $5, (a[2]+$6), (a[2]+$7), $8, $9, $10, $11}' RNL_temp_3 > ${OUTPUT_DIR}${PREFIX}_RNL.gff3
-seqtk subseq ${PROTEIN_FILE} ${OUTPUT_DIR}${PREFIX}_RNL.list > ${OUTPUT_DIR}${PREFIX}_RNL.fasta
+seqtk subseq ${PROTEIN_FILE} ${OUTPUT_DIR}${PREFIX}_RNL.list > ${OUTPUT_DIR}${PREFIX}_RNL_AA.fasta
 seqtk subseq ${CODING_SEQ_FILE} ${OUTPUT_DIR}${PREFIX}_RNL.list > ${OUTPUT_DIR}${PREFIX}_RNL_CDS.fasta
 for files in RNL_temp_* ; do rm ${files} ; done
 
@@ -171,7 +171,7 @@ awk '{split($1, a, "."); print a[1]}' ${OUTPUT_DIR}${PREFIX}_RxNB.list | sort -k
 join RxNB_temp_2 GFF3_temp | sort -k2,2 -n > RxNB_temp_3
 # Reformat rows to produce new gff3 file
 awk 'BEGIN {OFS="\t"} {split($3, a, "[:\\-+]"); print  a[1], $4, $5, (a[2]+$6), (a[2]+$7), $8, $9, $10, $11}' RxNB_temp_3 > ${OUTPUT_DIR}${PREFIX}_RxNB.gff3
-seqtk subseq ${PROTEIN_FILE} ${OUTPUT_DIR}${PREFIX}_RxNB.list > ${OUTPUT_DIR}${PREFIX}_RxNB.fasta
+seqtk subseq ${PROTEIN_FILE} ${OUTPUT_DIR}${PREFIX}_RxNB.list > ${OUTPUT_DIR}${PREFIX}_RxNB_AA.fasta
 seqtk subseq ${CODING_SEQ_FILE} ${OUTPUT_DIR}${PREFIX}_RxNB.list > ${OUTPUT_DIR}${PREFIX}_RxNB_CDS.fasta
 for files in RxNB_temp_* ; do rm ${files} ; done
 
@@ -185,7 +185,7 @@ awk '{split($1, a, "."); print a[1]}' ${OUTPUT_DIR}${PREFIX}_RxNL.list | sort -k
 join RxNL_temp_2 GFF3_temp | sort -k2,2 -n > RxNL_temp_3
 # Reformat rows to produce new gff3 file
 awk 'BEGIN {OFS="\t"} {split($3, a, "[:\\-+]"); print  a[1], $4, $5, (a[2]+$6), (a[2]+$7), $8, $9, $10, $11}' RxNL_temp_3 > ${OUTPUT_DIR}${PREFIX}_RxNL.gff3
-seqtk subseq ${PROTEIN_FILE} ${OUTPUT_DIR}${PREFIX}_RxNL.list > ${OUTPUT_DIR}${PREFIX}_RxNL.fasta
+seqtk subseq ${PROTEIN_FILE} ${OUTPUT_DIR}${PREFIX}_RxNL.list > ${OUTPUT_DIR}${PREFIX}_RxNL_AA.fasta
 seqtk subseq ${CODING_SEQ_FILE} ${OUTPUT_DIR}${PREFIX}_RxNL.list > ${OUTPUT_DIR}${PREFIX}_RxNL_CDS.fasta
 for files in RxNL_temp_* ; do rm ${files} ; done
 
@@ -198,7 +198,7 @@ awk '{split($1, a, "."); print a[1]}' ${OUTPUT_DIR}${PREFIX}_TNB.list | sort -k 
 join TNB_temp_2 GFF3_temp | sort -k2,2 -n > TNB_temp_3
 # Reformat rows to produce new gff3 file
 awk 'BEGIN {OFS="\t"} {split($3, a, "[:\\-+]"); print  a[1], $4, $5, (a[2]+$6), (a[2]+$7), $8, $9, $10, $11}' TNB_temp_3 > ${OUTPUT_DIR}${PREFIX}_TNB.gff3
-seqtk subseq ${PROTEIN_FILE} ${OUTPUT_DIR}${PREFIX}_TNB.list > ${OUTPUT_DIR}${PREFIX}_TNB.fasta
+seqtk subseq ${PROTEIN_FILE} ${OUTPUT_DIR}${PREFIX}_TNB.list > ${OUTPUT_DIR}${PREFIX}_TNB_AA.fasta
 seqtk subseq ${CODING_SEQ_FILE} ${OUTPUT_DIR}${PREFIX}_TNB.list > ${OUTPUT_DIR}${PREFIX}_TNB_CDS.fasta
 for files in TNB_temp_* ; do rm ${files} ; done
 
@@ -212,7 +212,7 @@ awk '{split($1, a, "."); print a[1]}' ${OUTPUT_DIR}${PREFIX}_TNL.list | sort -k 
 join TNL_temp_2 GFF3_temp | sort -k2,2 -n > TNL_temp_3
 # Reformat rows to produce new gff3 file
 awk 'BEGIN {OFS="\t"} {split($3, a, "[:\\-+]"); print  a[1], $4, $5, (a[2]+$6), (a[2]+$7), $8, $9, $10, $11}' TNL_temp_3 > ${OUTPUT_DIR}${PREFIX}_TNL.gff3
-seqtk subseq ${PROTEIN_FILE} ${OUTPUT_DIR}${PREFIX}_TNL.list > ${OUTPUT_DIR}${PREFIX}_TNL.fasta
+seqtk subseq ${PROTEIN_FILE} ${OUTPUT_DIR}${PREFIX}_TNL.list > ${OUTPUT_DIR}${PREFIX}_TNL_AA.fasta
 seqtk subseq ${CODING_SEQ_FILE} ${OUTPUT_DIR}${PREFIX}_TNL.list > ${OUTPUT_DIR}${PREFIX}_TNL_CDS.fasta
 for files in TNL_temp_* ; do rm ${files} ; done
 
@@ -231,7 +231,7 @@ awk '{split($1, a, "."); print a[1]}' ${OUTPUT_DIR}${PREFIX}_CNB.list | sort -k 
 join CNB_temp_3 GFF3_temp | sort -k2,2 -n > CNB_temp_4
 # Reformat rows to produce new gff3 file
 awk 'BEGIN {OFS="\t"} {split($3, a, "[:\\-+]"); print  a[1], $4, $5, (a[2]+$6), (a[2]+$7), $8, $9, $10, $11}' CNB_temp_4 > ${OUTPUT_DIR}${PREFIX}_CNB.gff3
-seqtk subseq ${PROTEIN_FILE} ${OUTPUT_DIR}${PREFIX}_CNB.list > ${OUTPUT_DIR}${PREFIX}_CNB.fasta
+seqtk subseq ${PROTEIN_FILE} ${OUTPUT_DIR}${PREFIX}_CNB.list > ${OUTPUT_DIR}${PREFIX}_CNB_AA.fasta
 seqtk subseq ${CODING_SEQ_FILE} ${OUTPUT_DIR}${PREFIX}_CNB.list > ${OUTPUT_DIR}${PREFIX}_CNB_CDS.fasta
 for files in CNB_temp_* ; do rm ${files} ; done
 
@@ -246,7 +246,7 @@ awk '{split($1, a, "."); print a[1]}' ${OUTPUT_DIR}${PREFIX}_CNL.list | sort -k 
 join CNL_temp_2 GFF3_temp | sort -k2,2 -n > CNL_temp_3
 # Reformat rows to produce new gff3 file
 awk 'BEGIN {OFS="\t"} {split($3, a, "[:\\-+]"); print  a[1], $4, $5, (a[2]+$6), (a[2]+$7), $8, $9, $10, $11}' CNL_temp_3 > ${OUTPUT_DIR}${PREFIX}_CNL.gff3
-seqtk subseq ${PROTEIN_FILE} ${OUTPUT_DIR}${PREFIX}_CNL.list > ${OUTPUT_DIR}${PREFIX}_CNL.fasta
+seqtk subseq ${PROTEIN_FILE} ${OUTPUT_DIR}${PREFIX}_CNL.list > ${OUTPUT_DIR}${PREFIX}_CNL_AA.fasta
 seqtk subseq ${CODING_SEQ_FILE} ${OUTPUT_DIR}${PREFIX}_CNL.list > ${OUTPUT_DIR}${PREFIX}_CNL_CDS.fasta
 for files in CNL_temp_* ; do rm ${files} ; done
 
@@ -259,7 +259,7 @@ awk '{split($1, a, "."); print a[1]}' ${OUTPUT_DIR}${PREFIX}_JNB.list | sort -k 
 join JNB_temp_2 GFF3_temp | sort -k2,2 -n > JNB_temp_3
 # Reformat rows to produce new gff3 file
 awk 'BEGIN {OFS="\t"} {split($3, a, "[:\\-+]"); print  a[1], $4, $5, (a[2]+$6), (a[2]+$7), $8, $9, $10, $11}' JNB_temp_3 > ${OUTPUT_DIR}${PREFIX}_JNB.gff3
-seqtk subseq ${PROTEIN_FILE} ${OUTPUT_DIR}${PREFIX}_JNB.list > ${OUTPUT_DIR}${PREFIX}_JNB.fasta
+seqtk subseq ${PROTEIN_FILE} ${OUTPUT_DIR}${PREFIX}_JNB.list > ${OUTPUT_DIR}${PREFIX}_JNB_AA.fasta
 seqtk subseq ${CODING_SEQ_FILE} ${OUTPUT_DIR}${PREFIX}_JNB.list > ${OUTPUT_DIR}${PREFIX}_JNB_CDS.fasta
 for files in JNB_temp_* ; do rm ${files} ; done
 
@@ -272,7 +272,7 @@ awk '{split($1, a, "."); print a[1]}' ${OUTPUT_DIR}${PREFIX}_JNL.list | sort -k 
 join JNL_temp_2 GFF3_temp | sort -k2,2 -n > JNL_temp_3
 # Reformat rows to produce new gff3 file
 awk 'BEGIN {OFS="\t"} {split($3, a, "[:\\-+]"); print a[1], $4, $5, (a[2]+$6), (a[2]+$7), $8, $9, $10, $11}' JNL_temp_3 > ${OUTPUT_DIR}${PREFIX}_JNL.gff3
-seqtk subseq ${PROTEIN_FILE} ${OUTPUT_DIR}${PREFIX}_JNL.list > ${OUTPUT_DIR}${PREFIX}_JNL.fasta
+seqtk subseq ${PROTEIN_FILE} ${OUTPUT_DIR}${PREFIX}_JNL.list > ${OUTPUT_DIR}${PREFIX}_JNL_AA.fasta
 seqtk subseq ${CODING_SEQ_FILE} ${OUTPUT_DIR}${PREFIX}_JNL.list > ${OUTPUT_DIR}${PREFIX}_JNL_CDS.fasta
 for files in JNL_temp_* ; do rm ${files} ; done
 
