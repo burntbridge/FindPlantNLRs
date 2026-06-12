@@ -236,7 +236,7 @@ RUN cd /opt && \
 #
 RUN cd /opt/FindPlantNLRs/ref_db && \
     wget https://doi.org/10.1371/journal.pbio.3001124.s013 && \
-    mv journal.pbio.3001124.s013.fasta ref.fasta
+    mv journal.pbio.3001124.s013 ref.fasta
     
 # copy stuff to /work
 
